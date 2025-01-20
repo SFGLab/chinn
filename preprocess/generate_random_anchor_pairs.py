@@ -4,6 +4,8 @@ from preprocess.pair_generation import load_data, get_clusters, get_neg_pairs, g
 from preprocess.pair_generation import save_neg_pairs
 
 if __name__=='__main__':
+    import sys
+    sys.setrecursionlimit(20000)
     parser = argparse.ArgumentParser(description="Generate random pairs of anchors")
     parser.add_argument("name", help="The prefix of the dataset. For example k562_polr2a.")
     parser.add_argument("datadir", help="The directory where the input and output are in.")

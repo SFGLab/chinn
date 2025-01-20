@@ -6,7 +6,7 @@ import numpy as np
 from sklearn.utils import shuffle
 from sklearn.metrics import roc_auc_score, precision_recall_curve, roc_curve
 import xgboost as xgb
-from sklearn.externals import joblib
+import joblib
 from sklearn.metrics import precision_score, recall_score, f1_score, average_precision_score
 from chinn.epigenetic_model import train_estimator, get_val_results, test_other
 

@@ -197,8 +197,8 @@ def plot_dist_distri(t_dists, selected_pairs):
     print(len(selected_pairs))
     n_counts, n_edges = np.histogram(
         np.log10([0.5 * (-p[1] + p[4] - p[2] + p[5]) for p in selected_pairs]),
-        normed=True, bins=20)
-    p_counts, p_edges = np.histogram(np.log10([p for p in t_dists]), bins=20, normed=True)
+        density=True, bins=20)
+    p_counts, p_edges = np.histogram(np.log10([p for p in t_dists]), bins=20, density=True)
     n_centers = 0.5 * (n_edges[:-1] + n_edges[1:])
     p_centers = 0.5 * (p_edges[:-1] + p_edges[1:])
     _ = pl.plot(n_centers, n_counts)
@@ -214,7 +214,7 @@ def sample_from_neg_pairs(pos_dists_dict, neg_pairs, fold, other_neg_pairs, num_
     for chrom in pos_dists_dict:
         print(chrom)
         pos_dists = pos_dists_dict[chrom]
-        counts, edges = np.histogram(np.log10(pos_dists), normed=False, bins=num_bins, range=dist_range)
+        counts, edges = np.histogram(np.log10(pos_dists), density=False, bins=num_bins, range=dist_range)
         neg_classes = [[] for _ in counts]
         other_neg_classes = [[] for _ in counts]
         shortage[chrom] = [0 for _ in counts]
@@ -246,7 +246,7 @@ def sample_from_neg_pairs(pos_dists_dict, neg_pairs, fold, other_neg_pairs, num_
         print(chrom)
         pos_dists = pos_dists_dict[chrom]
 
-        counts, edges = np.histogram(np.log10(pos_dists), normed=False, bins=num_bins, range=dist_range)
+        counts, edges = np.histogram(np.log10(pos_dists), density=False, bins=num_bins, range=dist_range)
         neg_classes = [[] for _ in counts]
         other_neg_classes = [[] for _ in counts]
 

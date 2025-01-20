@@ -3,7 +3,7 @@ import argparse
 import h5py
 import numpy as np
 import xgboost as xgb
-from sklearn.externals import joblib
+import joblib
 from chinn.models import PartialDeepSeaModel
 from chinn import train
 

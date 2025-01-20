@@ -1,18 +1,11 @@
-'''
-This file contains functions to produce hdf5 files for training/validation/test.
-The validation chroms are 5, 14
-The test chromosomes are 4, 7, 8, 11
-'''
 import os,sys
 import argparse
 from chinn import variables
-from chinn.data_preparation_helper import get_and_save_data, load_pairs
+from chinn.data_preparation_helper import get_and_save_data, load_pairs, __doc__
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='generate hdf5 files for prediction.'
-                                     + " The validation chromosomes are 5, 14."
-                                     + " The test chromosomes are 4, 7, 8, 11. Rest will be training.")
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('-m', '--min_size', type=int, required=True, help='minimum size of anchors to use')
     parser.add_argument('-e', '--ext_size', type=int, required=False, help='extension size of anchors to use')
     parser.add_argument('-n', '--name', type=str, required=True, help='The prefix of the files.')

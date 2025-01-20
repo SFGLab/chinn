@@ -1,7 +1,7 @@
 '''
-This file contains functions to produce hdf5 files for training/validation/test.
-The validation chroms are 5, 14
-The test chromosomes are 4, 7, 8, 11
+generates hdf5 training/validation/test files for prediction
+The validation chrom is 15
+The test chrom is 14
 '''
 from sklearn.utils import shuffle
 import numpy as np
@@ -44,8 +44,8 @@ def _load_data(fn, hg19, label,
                test_pairs, test_labels, peaks_list, allow_inter=False, breakpoints={}):
     int_cols = [1, 2, 4, 5]
     chrom_cols = [0, 3]
-    val_chroms = [5, 14]
-    test_chroms = [4, 11, 7, 8]
+    val_chroms = [15]
+    test_chroms = [14]
     with open(fn) as f:
         for r in f:
             tokens = r.strip().split()

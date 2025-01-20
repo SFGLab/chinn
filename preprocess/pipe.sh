@@ -49,25 +49,25 @@ echo "Generating random DNase pairs"
 python ${DIR}/generate_random_pairs_bed.py $NAME $DNASE dnase ${DATADIR}
 
 echo "Filtering TF peak pairs"
-pairToPair -a ${DATADIR}/${NAME}.random_tf_peak_pairs.bedpe -b $INTERS -type notboth  \
-    | pairToPair -a stdin -b  ${DATADIR}/${NAME}.no_intra_all.negative_pairs.bedpe   -type notboth \
-    | pairToPair -a stdin -b  ${DATADIR}/${NAME}.only_intra_all.negative_pairs.bedpe  -type notboth \
+singularity exec tools.sif pairToPair -a ${DATADIR}/${NAME}.random_tf_peak_pairs.bedpe -b $INTERS -type notboth  \
+    | singularity exec tools.sif pairToPair -a stdin -b  ${DATADIR}/${NAME}.no_intra_all.negative_pairs.bedpe   -type notboth \
+    | singularity exec tools.sif pairToPair -a stdin -b  ${DATADIR}/${NAME}.only_intra_all.negative_pairs.bedpe  -type notboth \
     | uniq > ${DATADIR}/${NAME}.random_tf_peak_pairs.filtered.bedpe
 
 
 echo "Filtering DNase pairs"
-pairToPair -a ${DATADIR}/${NAME}.shuffled_neg_anchor.neg_pairs.bedpe -b $INTERS -type notboth \
-    | pairToPair -a stdin -b  ${DATADIR}/${NAME}.no_intra_all.negative_pairs.bedpe -type notboth \
-    | pairToPair -a stdin -b  ${DATADIR}/${NAME}.only_intra_all.negative_pairs.bedpe -type notboth \
+singularity exec tools.sif pairToPair -a ${DATADIR}/${NAME}.shuffled_neg_anchor.neg_pairs.bedpe -b $INTERS -type notboth \
+    | singularity exec tools.sif pairToPair -a stdin -b  ${DATADIR}/${NAME}.no_intra_all.negative_pairs.bedpe -type notboth \
+    | singularity exec tools.sif pairToPair -a stdin -b  ${DATADIR}/${NAME}.only_intra_all.negative_pairs.bedpe -type notboth \
     | uniq \
-    | pairToPair -a stdin -b ${DATADIR}/${NAME}.random_tf_peak_pairs.filtered.bedpe -type notboth \
+    | singularity exec tools.sif pairToPair -a stdin -b ${DATADIR}/${NAME}.random_tf_peak_pairs.filtered.bedpe -type notboth \
     | uniq > ${DATADIR}/${NAME}.shuffled_neg_anchor.neg_pairs.filtered.tf_filtered.bedpe
 
 echo "Sampling 5x negative samples"
 python ${DIR}/generate_5fold_neg.py $NAME ${DATADIR}
 
 echo "Generate extended dataset of negative samples"
-cat ${DATADIR}/${DATADIR}/${NAME}.{only,no}_intra_all.negative_pairs.bedpe \
+cat ${DATADIR}/${NAME}.{only,no}_intra_all.negative_pairs.bedpe \
     ${DATADIR}/${NAME}.random_tf_peak_pairs.filtered.bedpe \
-    | pairToPair -a stdin -b ${DATADIR}/${NAME}.neg_pairs_5x.from_singleton_inter_tf_random.bedpe -type notboth \
+    | singularity exec tools.sif pairToPair -a stdin -b ${DATADIR}/${NAME}.neg_pairs_5x.from_singleton_inter_tf_random.bedpe -type notboth \
     | sort -u > ${DATADIR}/${NAME}.extended_negs_with_intra.bedpe

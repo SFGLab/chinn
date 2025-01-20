@@ -5,6 +5,8 @@ import argparse
 from preprocess.pair_generation import load_data
 
 if __name__=='__main__':
+    import sys
+    sys.setrecursionlimit(20000)
     parser = argparse.ArgumentParser(description="Generate random pairs of DNase regions")
     parser.add_argument("name", help="The prefix of the dataset. For example k562_polr2a.")
     parser.add_argument("input_file", help="The DNase/TF file in BED format")

@@ -32,14 +32,14 @@ if __name__=='__main__':
         n_filters += 1
     classifier = NNClassifier(n_filters, legacy=legacy)
 
-    #train.train(model=deepsea_model, classifier=classifier, init_lr=0.0002, epochs=args.epochs,
-    #            data_pre=data_name, model_name=model_name, retraining=False,
-    #            use_weight_for_training='balanced', use_distance=args.distance,
-    #            model_dir=args.model_dir, legacy=legacy, plot=False)
+    train.train(model=deepsea_model, classifier=classifier, init_lr=0.0002, epochs=args.epochs,
+               data_pre=data_name, model_name=model_name, retraining=False,
+               use_weight_for_training='balanced', use_distance=args.distance,
+               model_dir=args.model_dir, legacy=legacy, plot=False)
 
-    deepsea_model = PartialDeepSeaModel(4, use_weightsum=True, leaky=True, use_sigmoid=args.sigmoid)
-    classifier = NNClassifier(n_filters, legacy=legacy)
-    train.train(model=deepsea_model, classifier=classifier, init_lr=0.0001, epochs=args.epochs,
-                data_pre=data_name, model_name=model_name, retraining=True,
-                use_weight_for_training=None, use_distance=args.distance,
-                model_dir=args.model_dir, plot=False, legacy=legacy)
+    # deepsea_model = PartialDeepSeaModel(4, use_weightsum=True, leaky=True, use_sigmoid=args.sigmoid)
+    # classifier = NNClassifier(n_filters, legacy=legacy)
+    # train.train(model=deepsea_model, classifier=classifier, init_lr=0.0001, epochs=args.epochs,
+    #             data_pre=data_name, model_name=model_name, retraining=True,
+    #             use_weight_for_training=None, use_distance=args.distance,
+    #             model_dir=args.model_dir, plot=False, legacy=legacy)

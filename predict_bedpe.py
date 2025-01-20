@@ -3,7 +3,7 @@ import argparse
 import h5py
 import numpy as np
 import xgboost as xgb
-from sklearn.externals import joblib
+import joblib
 from multiprocessing.pool import Pool
 import sys
 from chinn.common import check_chrom, chrom_to_int
