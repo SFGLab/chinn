@@ -29,7 +29,7 @@ singularity pull tools.sif library://m10an/genomics/tools
 singularity pull samtools.sif library://millironx/default/samtools
 ```
 
-### Dataset:
+### Dataset
 
 ```shell
 # https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/GRCh38_reference_genome/GRCh38_full_analysis_set_plus_decoy_hla.fa
@@ -51,7 +51,7 @@ data
     └── ENCFF759OLD.bed       # https://www.encodeproject.org/files/ENCFF759OLD/
 ```
 
-__Note__: How up lifting of original hg19 data was made described in [data/gm12878_ctcf/hg38_lifted directory](https://github.com/SFGLab/chinn/blob/data/gm12878_ctcf/hg38_lifted)
+__Note__: How up lifting of original hg19 data was made described in [data/gm12878_ctcf/hg38_lifted directory](https://github.com/SFGLab/chinn/tree/hg38/data/gm12878_ctcf/hg38_lifted)
 
 __Note__: to run the scripts, use the root directory of this repository as the working directory.
 

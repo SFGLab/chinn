@@ -1,4 +1,3 @@
-"""
 # Up Lifting
 
 ```shell
@@ -33,4 +32,3 @@ python join_lifted.py
 python join_lifted.py peaks
 python join_lifted.py dnase
 ```
-"""
