@@ -47,8 +47,11 @@ data
 │   └── dnase.bed
 └── gm12878_ctcf/hg38         # data used for training HiCDiffusionLooping
     ├── 4DNFI9SL1WSF.bedpe    # https://data.4dnucleome.org/files-processed/4DNFI9SL1WSF/
-    ├── 4DNFIV1N7TLK.bed      # https://data.4dnucleome.org/files-processed/4DNFIV1N7TLK/
+    ├── peaks.bed             # https://data.4dnucleome.org/files-processed/4DNFIV1N7TLK/ and https://data.4dnucleome.org/files-processed/4DNFIW1VY2CW
     └── ENCFF759OLD.bed       # https://www.encodeproject.org/files/ENCFF759OLD/
+
+# gm12878_ctcf/hg38/peaks.bed is combination of two peaks:
+# cat 4DNFIV1N7TLK.bed 4DNFIW1VY2CW.bed | sort -k1,1 -k2,2n | uniq > peaks.bed
 ```
 
 __Note__: How up lifting of original hg19 data was made described in [data/gm12878_ctcf/hg38_lifted directory](https://github.com/SFGLab/chinn/tree/hg38/data/gm12878_ctcf/hg38_lifted)
@@ -65,7 +68,7 @@ export PYTHONPATH=$PWD
 
 bash preprocess/pipe.sh data/gm12878_ctcf/hg38/4DNFI9SL1WSF.bedpe \
                         data/gm12878_ctcf/hg38/ENCFF759OLD.bed \
-                        data/gm12878_ctcf/hg38/4DNFIV1N7TLK.bed \
+                        data/gm12878_ctcf/hg38/peaks.bed \
                         gm12878_ctcf \
                         out_dir
 
@@ -109,4 +112,3 @@ python predict_bedpe.py -m out_dir/gm12878_ctcf_model.model.pt \
                 --output_pre out_dir/hg38
 
 ```
-
